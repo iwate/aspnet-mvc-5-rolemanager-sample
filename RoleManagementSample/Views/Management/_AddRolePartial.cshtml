@@ -1,0 +1,11 @@
+﻿@using RoleManagementSample.Models
+@model RoleViewModel
+
+@using (Html.BeginForm("Roles", "Management", FormMethod.Post, new { @class = "form-inline", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder="ロール名" })
+    </div>
+    <input type="submit" value="登録" class="btn btn-primary" />
+}

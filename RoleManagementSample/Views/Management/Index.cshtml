@@ -1,0 +1,28 @@
+﻿@using RoleManagementSample.Models
+@model ManagementViewModel
+
+@{
+    ViewBag.Title = "Role Page";
+}
+
+<div class="col-md-4">
+    <h3>ロール管理</h3>
+    @Html.Partial("_AddRolePartial", new RoleViewModel())
+    <table id="role-table" class="table">
+        @foreach (var role in Model.Roles)
+        {
+            @Html.Partial("_RoleRecordPartial", role);
+        }
+    </table>
+</div>
+<div class="col-md-8">
+    <h3>アカウント管理</h3>
+    @Html.Partial("_AddAccountPartial", new AccountViewModel())
+    <table id="account-table" class="table">
+        @foreach (var user in Model.Users)
+        {
+            @Html.Partial("_AccountRecordPartial", new AccountRecordViewModel { User = user, Roles = Model.Roles})
+        }
+    </table>
+
+</div>
